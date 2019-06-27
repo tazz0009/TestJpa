@@ -39,14 +39,13 @@ public class Jpa005ApplicationTests {
 	}
 	
 	@Test
-	@Transactional
 	public void test001() {
 		Locker locker1 = Locker.builder()
 				.name("locker1").build();
-		Locker findedlocker1 = lockerService.save(locker1);
+		Locker savedlocker1 = lockerService.save(locker1);
 		Locker locker2 = Locker.builder()
 				.name("locker2").build();
-		Locker findedlocker2 = lockerService.save(locker2);
+		Locker savedlocker2 = lockerService.save(locker2);
 		
 		Member member1 = Member.builder().username("member1").build();
 		Member savedMember1 = memberService.save(member1);
@@ -55,21 +54,21 @@ public class Jpa005ApplicationTests {
 		Member member3 = Member.builder().username("member3").build();
 		Member savedMember3 = memberService.save(member3);
 		
-		savedMember1.setLocker(findedlocker1);
-		savedMember2.setLocker(findedlocker1);
-		savedMember3.setLocker(findedlocker2);
+		savedMember1.setLocker(savedlocker1);
+		savedMember2.setLocker(savedlocker1);
+		savedMember3.setLocker(savedlocker2);
 		
 		savedMember1 = memberService.save(savedMember1);
 		assertThat(savedMember1.getUsername(), is(member1.getUsername()));
-		assertThat(savedMember1.getLocker().getName(), is(findedlocker1.getName()));
+		assertThat(savedMember1.getLocker().getName(), is(savedlocker1.getName()));
 
 		savedMember2 = memberService.save(savedMember2);
 		assertThat(savedMember2.getUsername(), is(member2.getUsername()));
-		assertThat(savedMember2.getLocker().getName(), is(findedlocker1.getName()));
+		assertThat(savedMember2.getLocker().getName(), is(savedlocker1.getName()));
 		
 		savedMember3 = memberService.save(savedMember3);
 		assertThat(savedMember3.getUsername(), is(member3.getUsername()));
-		assertThat(savedMember3.getLocker().getName(), is(findedlocker2.getName()));
+		assertThat(savedMember3.getLocker().getName(), is(savedlocker2.getName()));
 	}
 	
 }
