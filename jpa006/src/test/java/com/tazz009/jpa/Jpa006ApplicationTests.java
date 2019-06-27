@@ -18,7 +18,7 @@ import com.tazz009.jpa.services.MemberService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Jpa005ApplicationTests {
+public class Jpa006ApplicationTests {
 
 	@Autowired
 	private MemberService memberService;
@@ -61,6 +61,12 @@ public class Jpa005ApplicationTests {
 		assertThat(savedMember2.getUsername(), is(member2.getUsername()));
 		assertThat(savedMember2.getLocker().getName(), is(savedlocker2.getName()));
 		
+		Locker findedLocker1 = lockerService.findByName(savedlocker1.getName());
+		assertThat(findedLocker1.getMember().getUsername(), is(savedMember1.getUsername()));
+		
+		Locker findedLocker2 = lockerService.findByName(savedlocker2.getName());
+		assertThat(findedLocker2.getMember().getUsername(), is(savedMember2.getUsername()));
+		
 	}
-	
+
 }
