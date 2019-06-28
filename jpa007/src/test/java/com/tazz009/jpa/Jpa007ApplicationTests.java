@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -22,6 +24,7 @@ import com.tazz009.jpa.services.ProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Jpa007ApplicationTests {
 
 	@Autowired
@@ -41,7 +44,7 @@ public class Jpa007ApplicationTests {
 	}
 	
 	@Test
-	public void saveTest() throws Exception {
+	public void testA_SAVE() throws Exception {
 		Product productA = Product.builder().id("productA").name("상품A").build();
 		Product savedProdcutA = productService.save(productA);
 		Product productB = Product.builder().id("productB").name("상품B").build();
@@ -57,7 +60,8 @@ public class Jpa007ApplicationTests {
 	}
 	
 	@Test
-	public void findTest() throws Exception {
+//	@Transactional
+	public void testB_FIND() throws Exception {
 		Member member1 = Member.builder().id("member1").username("회원1").build();
 		Optional<Member> findedMember = memberService.findById(member1.getId());
 		
