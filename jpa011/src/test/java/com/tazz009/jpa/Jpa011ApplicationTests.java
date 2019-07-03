@@ -66,7 +66,7 @@ public class Jpa011ApplicationTests {
 	}
 
 	@Test
-	public void testB_SAVE_Book() throws Exception {
+	public void testC_SAVE_Book() throws Exception {
 		Item book1 = Book.builder()
 				.name("책1")
 				.price(1000)
