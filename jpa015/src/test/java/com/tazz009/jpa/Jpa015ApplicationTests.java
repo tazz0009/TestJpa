@@ -17,7 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.tazz009.jpa.entities.Child;
 import com.tazz009.jpa.entities.Parent;
-import com.tazz009.jpa.entities.ParentId;
 import com.tazz009.jpa.services.ChildService;
 import com.tazz009.jpa.services.ParentService;
 
