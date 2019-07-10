@@ -114,7 +114,7 @@ public class Jpa018ApplicationTests {
 	}
 	
 	@Test
-	public void testE_SAVE_GRANDChild() throws Exception {
+	public void testE_SAVE_GrandChild() throws Exception {
 		Parent parent1 = Parent.builder()
 				.id("myId")
 				.build();
@@ -146,7 +146,7 @@ public class Jpa018ApplicationTests {
 	}
 	
 	@Test
-	public void testF_FIND_GRANDChild() throws Exception {
+	public void testF_FIND_GrandChild() throws Exception {
 		
 		Parent parent1 = Parent.builder()
 				.id("myId")
