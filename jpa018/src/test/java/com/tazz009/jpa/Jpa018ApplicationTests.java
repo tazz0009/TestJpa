@@ -3,6 +3,7 @@ package com.tazz009.jpa;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.After;
@@ -170,4 +171,21 @@ public class Jpa018ApplicationTests {
 		assertThat(findedGrandChild1.get().getId().getId(), is(grandChildId.getId()));
 		assertThat(findedGrandChild1.get().getName(), is("grandChildName"));
 	}
+	
+	@Test
+	public void testG_FIND_Childs_GrandChilds() throws Exception {
+		Parent parent1 = Parent.builder()
+				.id("myId")
+				.build();
+		List<Child> childs = childService.findByParent(parent1);
+		
+		assertThat(childs.size(), is(1));
+		assertThat(childs.get(0).getName(), is("childName"));
+
+		List<GrandChild> grandChilds = grandChildService.findByChild(childs.get(0));
+
+		assertThat(grandChilds.size(), is(1));
+		assertThat(grandChilds.get(0).getName(), is("grandChildName"));
+	}
+
 }
