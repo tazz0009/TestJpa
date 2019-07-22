@@ -40,8 +40,7 @@ public class Member {
 
 	@ElementCollection
 	@CollectionTable(name = "ADDRESS"
-	, joinColumns = @JoinColumn(name = "MEMBER_ID"))
-	@Column(name = "FOOD_NAME")
+		, joinColumns = @JoinColumn(name = "MEMBER_ID"))
 	private Set<Address> addressHistory = new HashSet<Address>();
 	
 	@Builder
